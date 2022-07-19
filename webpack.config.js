@@ -8,8 +8,24 @@ module.exports = {
     filename: 'webpack.bundle.js',
   },
   plugins: [
-        new HtmlWebpackPlugin(
-          { template: './src/index.html' }
-        )
-      ],
+    new HtmlWebpackPlugin(
+      { template: './src/index.html' }
+    )
+  ],
+  module: {
+    rules: [
+      { 
+        test: /\.scss$/, 
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ]
+      },
+    ],
+  },
+  
 };
